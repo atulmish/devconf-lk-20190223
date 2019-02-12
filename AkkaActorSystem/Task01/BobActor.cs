@@ -1,7 +1,12 @@
+using Akka.Actor;
+
 namespace AkkaActorSystem.Task01
 {
-    public class BobActor
+    public class BobActor:ReceiveActor
     {
+        public BobActor()
+        {
 
+        }
     }
 }
