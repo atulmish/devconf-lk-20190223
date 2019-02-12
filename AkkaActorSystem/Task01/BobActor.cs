@@ -6,7 +6,15 @@ namespace AkkaActorSystem.Task01
     {
         public BobActor()
         {
+            Receive<Messages.AuthRequest>(m =>
+            {
+                Sender.Tell(new Messages.AuthResponse());
+            });
 
+            Receive<Messages.AnotherAuthRequest>(m =>
+            {
+                Sender.Tell(new Messages.AnotherAuthResponse());
+            });
         }
     }
 }
