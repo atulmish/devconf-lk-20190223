@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+Bob --> Alice: Add some numbers
+Bob --> Alice: Add some numbers
+alt
+Alice -> Alice: TimerMessage
+    note right
+    timer message
+    is sent every 5 seconds
+    end note
+Alice -> John: CalculationResults
+end alt
+
+Bob --> Alice: Add some numbers
+
+Bob --> Alice: Add some numbers
+@enduml
