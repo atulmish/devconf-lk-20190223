@@ -1,7 +1,7 @@
 namespace AkkaActorSystem.Tests.Task01
 {
-    public class BobActorTests
+    public class BobActorTests:ActorTestBase
     {
-        
+
     }
 }
