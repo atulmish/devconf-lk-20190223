@@ -9,11 +9,16 @@ namespace AkkaActorSystem.Task01
             Receive<Messages.AuthRequest>(m =>
             {
                 Sender.Tell(new Messages.AuthResponse());
+                Become(WaitingForNextRequest);
             });
+        }
 
+        private void WaitingForNextRequest()
+        {
             Receive<Messages.AnotherAuthRequest>(m =>
             {
                 Sender.Tell(new Messages.AnotherAuthResponse());
+                UnbecomeStacked();
             });
         }
     }

@@ -20,8 +20,7 @@ namespace AkkaActorSystem.Tests.Task01
         [Fact]
         public void WhenBobReceivesAnotherAuthenticationRequestThenAnotherResponseIsSent()
         {
-            var props = Props.Create(() => new BobActor());
-            _sut = Sys.ActorOf(props);
+            WhenBobReceivesAuthenticationRequestThenResponseIsSent();
 
             _sut.Tell(new Messages.AnotherAuthRequest());
             ExpectMsg<Messages.AnotherAuthResponse>();
