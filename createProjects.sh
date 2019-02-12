@@ -15,6 +15,8 @@ dotnet add package Akka.Cluster --version 1.3.11
 cd ..
 cd AkkaActorSystem.Tests
 
+dotnet add reference ../AkkaActorSystem/AkkaActorSystem.csproj
+
 dotnet add package Akka --version 1.3.11
 dotnet add package Akka.Remote --version 1.3.11
 dotnet add package Akka.Cluster --version 1.3.11
