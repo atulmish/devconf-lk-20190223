@@ -9,6 +9,7 @@ Alice -> Alice: TimerMessage
     note right
     timer message
     is sent every 5 seconds
+    and response shall be sent to John :)
     end note
 Alice -> John: CalculationResults
 end alt
