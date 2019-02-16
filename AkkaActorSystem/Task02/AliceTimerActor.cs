@@ -33,7 +33,7 @@ namespace AkkaActorSystem.Task02
 
             Context.System.Scheduler.ScheduleTellRepeatedly(
                 TimeSpan.FromSeconds(5),
-                TimeSpan.FromSeconds(5),
+                TimeSpan.FromSeconds(1),
                 Self,
                 new TimerMessages.TimerTick(),
                 Self,
