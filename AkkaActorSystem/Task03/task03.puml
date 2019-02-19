@@ -1,10 +1,14 @@
 @startuml
-(*)  --> "check input"
-If "input is verbose" then
---> [Yes] "turn on verbosity"
---> "run command"
-else
---> "run command"
-Endif
--->(*)
+title FSM finite state machine
+(power on) as ci
+(green EW, red NS) as ew
+(red EW, green NS) as ns
+(green Pedestrians, NS EW red) as gp
+
+ci--> ew: initial state
+ew-->ns:Timer
+ns->ew:Timer, counter=0
+ns->gp:Timer, counter>0
+gp->ew:Timer
+
 @enduml
