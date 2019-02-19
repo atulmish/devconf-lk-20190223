@@ -102,6 +102,9 @@ namespace AkkaActorSystem.Tests.Task03
         [Fact]
         public void WhenInStateCAndTimerThenStateAShallBeActivated()
         {
+
+            // run this test to demonstrate that we shall cancel timers :)
+            // dotnet test --filter "FullyQualifiedName=AkkaActorSystem.Tests.Task03.LightControllingActorTests.WhenInStateCAndTimerThenStateAShallBeActivated"
             // arrange/given
             WhenInStateBAndTimerAndPushButtonThenStateCShallBeActivated();
 
