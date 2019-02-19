@@ -1,0 +1,11 @@
+@startuml
+title Supervision Strategies: resume
+(Start) --> (Increase counter) :+1
+(Increase counter) --> (Unsafe Operation)
+(Unsafe Operation) --> (Exception)
+(Exception) -->(**Stop**)
+(Exception) -->(**Resume**)
+(Exception) -->(**Restart**)
+(Exception) -->(**Escalate**)
+
+@enduml
