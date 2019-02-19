@@ -21,8 +21,4 @@
     <ProjectReference Include="..\AkkaActorSystem\AkkaActorSystem.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Task04" />
-  </ItemGroup>
-
 </Project>
