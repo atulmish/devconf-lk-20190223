@@ -1,3 +1,5 @@
+using Akka.Actor;
+
 namespace AkkaActorSystem.Task04
 {
     public class Messages
@@ -12,6 +14,18 @@ namespace AkkaActorSystem.Task04
             public MyStatus(int value)
             {
                 Value = value;
+            }
+        }
+
+        public class CreateChild{}
+
+        public class ChildCreated
+        {
+            public IActorRef Child { get; }
+
+            public ChildCreated(IActorRef child)
+            {
+                Child = child;
             }
         }
     }

@@ -4,9 +4,9 @@ using Akka.Routing;
 
 namespace AkkaActorSystem.Task04
 {
-    public class ResumingActor:ReceiveActor
+    public class RestartingActor:ReceiveActor
     {
-        public ResumingActor()
+        public RestartingActor()
         {
             Receive<Messages.CreateChild>(c =>
             {
@@ -17,7 +17,7 @@ namespace AkkaActorSystem.Task04
         }
         protected override SupervisorStrategy SupervisorStrategy()
         {
-            return new OneForOneStrategy(r=>Directive.Resume);
+            return new OneForOneStrategy(r=>Directive.Restart);
         }
     }
 }

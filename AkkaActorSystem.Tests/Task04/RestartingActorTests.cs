@@ -5,13 +5,13 @@ using Xunit;
 
 namespace AkkaActorSystem.Tests.Task04
 {
-    public class ResumingActorTests : ActorTestBase
+    public class RestartingActorTests : ActorTestBase
     {
         [Fact]
-        public void WhenChildRequestedAMessageWithActorRefIsSent()
+        public void WhenChildRequestedAMessageWithActorRefIsSent2()
         {
             // arrange/given
-            var props = Props.Create(() => new ResumingActor());
+            var props = Props.Create(() => new RestartingActor());
             _sut = Sys.ActorOf(props);
 
             // act/when
@@ -24,7 +24,7 @@ namespace AkkaActorSystem.Tests.Task04
         public void WhenReceivesAddAndGetStatusThenStatusMessageIsSent()
         {
             // arrange/given
-            WhenChildRequestedAMessageWithActorRefIsSent();
+            WhenChildRequestedAMessageWithActorRefIsSent2();
 
             // act/when
             _sut.Tell(new Messages.AddOne());
@@ -44,10 +44,11 @@ namespace AkkaActorSystem.Tests.Task04
             // act/when
             _sut.Tell(new Messages.AddOne());
             _sut.Tell(new Messages.UnsafeOperation());
+            _sut.Tell(new Messages.AddOne());
             _sut.Tell(new Messages.GetStatus());
 
             // assert/then
-            ExpectMsg<Messages.MyStatus>(a => { Assert.Equal(2, a.Value); });
+            ExpectMsg<Messages.MyStatus>(a => { Assert.Equal(1, a.Value); });
         }
     }
 }
