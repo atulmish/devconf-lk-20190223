@@ -1,11 +1,11 @@
 @startuml
 title FSM finite state machine
 (power on) as ci
-(green EW, red NS) as ew
-(red EW, green NS) as ns
-(green Pedestrians, NS EW red) as gp
+(green EW, red NS: StateA) as ew
+(red EW, green NS: StateB) as ns
+(green Pedestrians, NS EW red: StateC) as gp
 
-ci--> ew: initial state
+ci--> ew: initial state, Timer
 ew-->ns:Timer
 ns->ew:Timer, counter=0
 ns->gp:Timer, counter>0
