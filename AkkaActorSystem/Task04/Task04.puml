@@ -1,11 +1,11 @@
 @startuml
 title Supervision Strategies: resume
-(Start) --> (Increase counter) :+1
-(Increase counter) --> (Unsafe Operation)
-(Unsafe Operation) --> (Exception)
-(Exception) -->(**Stop**)
-(Exception) -->(**Resume**)
-(Exception) -->(**Restart**)
-(Exception) -->(**Escalate**)
+(Start) -> (Increase counter) :+1
+(Increase counter) -> (Unsafe Operation)
+(Unsafe Operation) -> (Exception)
+(Exception) -->(**Stop** \n kill actor)
+(Exception) -->(**Resume** \n swallow)
+(Exception) -->(**Restart** \n restart actor)
+(Exception) -->(**Escalate** \n let my parent decide)
 
 @enduml
