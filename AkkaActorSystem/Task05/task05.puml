@@ -1,0 +1,49 @@
+@startuml
+title Scaling
+start
+
+:round robin;
+  fork
+	:Task 1;
+	:Task 3;
+  fork again
+	:Task 2;
+	:Task 4;
+  end fork
+end
+
+
+:smallest mailbox;
+  fork
+	:Task 1;
+	:Task 3;
+	:Task 4;
+  fork again
+	:Task 2;
+	:Task 5;
+  end fork
+end
+
+
+:broadcast;
+  fork
+	:Task 1;
+  fork again
+	:Task 1;
+  end fork
+end
+
+
+
+
+:consistent hashing;
+  fork
+	:Treatment 1;
+  fork again
+	:Treatment 2;
+  end fork
+end
+
+
+
+@enduml
