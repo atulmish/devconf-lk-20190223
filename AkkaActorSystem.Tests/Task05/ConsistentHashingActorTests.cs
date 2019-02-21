@@ -45,7 +45,7 @@ namespace AkkaActorSystem.Tests.Task05
             _sut.Tell(new ScalingMessages.HashMessage("a"));
 
 
-              ExpectMsg<ScalingMessages.HashRsp>(
+            ExpectMsg<ScalingMessages.HashRsp>(
                 m => { Assert.Equal("aa", m.CustomerIds); }
             );
 
