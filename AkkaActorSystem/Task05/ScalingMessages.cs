@@ -1,4 +1,5 @@
 using System;
+using Akka.Routing;
 
 namespace AkkaActorSystem.Task05
 {
@@ -44,6 +45,28 @@ namespace AkkaActorSystem.Task05
 
         public class Response
         {
+        }
+
+        public class HashRsp
+        {
+            public string CustomerIds { get; }
+
+            public HashRsp(string customerIds)
+            {
+                CustomerIds = customerIds;
+            }
+        }
+
+        public class HashMessage:IConsistentHashable
+        {
+            public string CustomerCode { get; }
+
+            public HashMessage(string customerCode)
+            {
+                CustomerCode = customerCode;
+            }
+
+            public object ConsistentHashKey => CustomerCode;
         }
     }
 }
