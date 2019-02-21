@@ -1,6 +1,5 @@
 @startuml
 title Scaling
-start
 
 :round robin;
   fork
@@ -25,7 +24,7 @@ end
 end
 
 
-:broadcast;
+:scatter gather;
   fork
 	:Task 1;
   fork again
@@ -38,9 +37,13 @@ end
 
 :consistent hashing;
   fork
-	:Treatment 1;
+	:customer a;
+    :customer c;
+    :customer a;
   fork again
-	:Treatment 2;
+	:customer b;
+    :customer d;
+    :customer d;
   end fork
 end
 
