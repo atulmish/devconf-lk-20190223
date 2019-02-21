@@ -29,7 +29,7 @@ namespace AkkaActorSystem.Tests.Task05
 
             // assert/then
             ExpectMsg<ScalingMessages.Response>(TimeSpan.FromSeconds(2));
-
+            ExpectNoMsg();
 
 
 
