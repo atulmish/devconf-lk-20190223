@@ -7,20 +7,18 @@ using Xunit;
 
 namespace AkkaActorSystem.Tests.Task05
 {
-    public class ConsistentHashingActorTests:ActorTestBase
+    public class ConsistentHashingActorTests : ActorTestBase
     {
         [Fact]
-        public void WhenSent5MessagesResponsesShallBeIn2Seconds()
+        public void WhenMessageSentToRouterThenShallBeProcessedOnSameWorker()
         {
-
             // run this test to demonstrate what is going on
-            // dotnet test --filter "FullyQualifiedName=AkkaActorSystem.Tests.Task05.ScatterGatherActorTests.WhenSent5MessagesResponsesShallBeIn2Seconds"
+            // dotnet test --filter "FullyQualifiedName=AkkaActorSystem.Tests.Task05.ConsistentHashingActorTests.WhenMessageSentToRouterThenShallBeProcessedOnSameWorker"
 
             // arrange/given
-            var props = Props.Create(() => new BaseWorkerActor())
+            var props = Props.Create(() => new ConsistentHashWorkerActor())
                 .WithRouter(new ConsistentHashingPool(2));
             _sut = Sys.ActorOf(props);
-            var numberOfMessages = 5;
 
             // act/when
             // assert/then
@@ -28,40 +26,35 @@ namespace AkkaActorSystem.Tests.Task05
             _sut.Tell(new ScalingMessages.HashMessage("a"));
 
             ExpectMsg<ScalingMessages.HashRsp>(
-                m => {Assert.Same("a", m.CustomerIds); }
+                m => { Assert.Same("a", m.CustomerIds); }
             );
 
 
-            _sut.Tell(new ScalingMessages.HashMessage("b"));
+            _sut.Tell(new ScalingMessages.HashMessage("u"));
 
             ExpectMsg<ScalingMessages.HashRsp>(
-                m => {Assert.Same("b", m.CustomerIds); }
+                m => { Assert.Same("u", m.CustomerIds); }
             );
 
             _sut.Tell(new ScalingMessages.HashMessage("c"));
 
             ExpectMsg<ScalingMessages.HashRsp>(
-                m => {Assert.Same("c", m.CustomerIds); }
+                m => { Assert.Equal("uc", m.CustomerIds); }
             );
 
             _sut.Tell(new ScalingMessages.HashMessage("a"));
 
-            ExpectMsg<ScalingMessages.HashRsp>(
-                m => {Assert.Same("aa", m.CustomerIds); }
+
+              ExpectMsg<ScalingMessages.HashRsp>(
+                m => { Assert.Equal("aa", m.CustomerIds); }
             );
+
 
             _sut.Tell(new ScalingMessages.HashMessage("c"));
 
             ExpectMsg<ScalingMessages.HashRsp>(
-                m => {Assert.Same("cc", m.CustomerIds); }
+                m => { Assert.Equal("ucc", m.CustomerIds); }
             );
-
-
-
-
-            ExpectNoMsg();
-
-
 
 
         }
