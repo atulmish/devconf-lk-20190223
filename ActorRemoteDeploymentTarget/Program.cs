@@ -6,8 +6,10 @@ namespace ActorRemoteDeployee
     class Program
     {
         static void Main(string[] args)
-        {ActorSystemReference.StartSystem();
-            Console.WriteLine("Hello World!");
+        {
+                ActorSystemReference.StartSystem();
+                Console.WriteLine("Deployment Target is ready");
+                ActorSystemReference.ActorsSystem.WhenTerminated.Wait();
         }
     }
 }

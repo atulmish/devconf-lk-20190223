@@ -19,15 +19,15 @@ namespace ActorRunner
             var config = ConfigurationFactory.ParseString(
                 hocon: @"
                     akka {
-loglevel=INFO,  loggers=[""Akka.Logger.Serilog.SerilogLogger, Akka.Logger.Serilog""]
+                        loglevel=INFO,  loggers=[""Akka.Logger.Serilog.SerilogLogger, Akka.Logger.Serilog""]
                         actor {
                             provider = ""Akka.Remote.RemoteActorRefProvider, Akka.Remote""
                         }
                         remote {
                             dot-netty.tcp {
                                 port = 9001
-                                hostname = ""greglaptop""
-                                public-hostname = ""greglaptop""
+                                hostname = ""localhost""
+                                public-hostname = ""localhost""
 
                                   # Sets the send buffer size of the Sockets,
                                   # set to 0b for platform default
@@ -73,7 +73,7 @@ loglevel=INFO,  loggers=[""Akka.Logger.Serilog.SerilogLogger, Akka.Logger.Serilo
 
 
             var config = GetConfig();
-            ActorsSystem = ActorSystem.Create("actorSystem", config);
+            ActorsSystem = ActorSystem.Create("deployTarget", config);
 
         }
     }
