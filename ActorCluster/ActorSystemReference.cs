@@ -20,33 +20,16 @@ namespace ActorRunner
                 hocon: @"
                     akka {
                         loglevel=INFO,  loggers=[""Akka.Logger.Serilog.SerilogLogger, Akka.Logger.Serilog""]
-                        actor {
-                            provider = ""Akka.Remote.RemoteActorRefProvider, Akka.Remote""
+                        actor.provider = cluster
+                    remote {
+                        dot-netty.tcp {
+                            port = 8081
+                            hostname = localhost
                         }
-                        remote {
-                            dot-netty.tcp {
-                                port = 9001
-                                hostname = ""localhost""
-                                public-hostname = ""localhost""
-
-                                  # Sets the send buffer size of the Sockets,
-                                  # set to 0b for platform default
-                                  send-buffer-size = 33554432b
-
-                                  # Sets the receive buffer size of the Sockets,
-                                  # set to 0b for platform default
-                                  receive-buffer-size = 33554432b
-
-                                  # Maximum message size the transport will accept, but at least
-                                  # 32000 bytes.
-                                  # Please note that UDP does not support arbitrary large datagrams,
-                                  # so this setting has to be chosen carefully when using UDP.
-                                  # Both send-buffer-size and receive-buffer-size settings has to
-                                  # be adjusted to be able to buffer messages of maximum size.
-                                  maximum-frame-size = 16777216b
-
-
-                            }
+                    }
+                    cluster {
+                        seed-nodes = [""akka.tcp://ClusterSystem@localhost:8081""]
+                        roles = [master]
                         }
                     }
                     ");
@@ -73,7 +56,7 @@ namespace ActorRunner
 
 
             var config = GetConfig();
-            ActorsSystem = ActorSystem.Create("deployTarget", config);
+            ActorsSystem = ActorSystem.Create("ClusterSystem", config);
 
         }
     }

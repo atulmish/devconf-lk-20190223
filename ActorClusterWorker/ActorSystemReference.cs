@@ -23,12 +23,13 @@ namespace ActorRunner
                         actor.provider = cluster
     remote {
         dot-netty.tcp {
-            port = 8081
+            port = 0
             hostname = localhost
         }
     }
     cluster {
         seed-nodes = [""akka.tcp://ClusterSystem@localhost:8081""]
+        roles = [worker]
         }
                     }
                     ");
