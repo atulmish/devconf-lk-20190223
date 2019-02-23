@@ -14,7 +14,6 @@ namespace AkkaActorSystem.Task02
 
         public class TimerTick
         {
-
         }
 
         public class SummarisedValue

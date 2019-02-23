@@ -6,9 +6,8 @@ using Xunit;
 
 namespace AkkaActorSystem.Tests.Task03
 {
-    public class LightControllingActorTests:ActorTestBase
+    public class LightControllingActorTests : ActorTestBase
     {
-
         [Fact]
         public void WhenStartedAndReceivesTimerThenStateAActivated()
         {
@@ -18,9 +17,9 @@ namespace AkkaActorSystem.Tests.Task03
 
             var actorDict = new Dictionary<string, IActorRef>
             {
-                {"NS",_testProbe},
-                {"EW",_testProbe},
-                {"P",_testProbe},
+                {"NS", _testProbe},
+                {"EW", _testProbe},
+                {"P", _testProbe},
             };
 
             // act/when
@@ -46,7 +45,6 @@ namespace AkkaActorSystem.Tests.Task03
             // assert/then
             _testProbe.ExpectMsg<LightControlMessages.EastWestRed>();
             _testProbe.ExpectMsg<LightControlMessages.NorthSouthGreen>();
-
         }
 
 
@@ -96,13 +94,9 @@ namespace AkkaActorSystem.Tests.Task03
         }
 
 
-
-
-
         [Fact]
         public void WhenInStateCAndTimerThenStateAShallBeActivated()
         {
-
             // run this test to demonstrate that we shall use log :)
             // dotnet test --filter "FullyQualifiedName=AkkaActorSystem.Tests.Task03.LightControllingActorTests.WhenInStateCAndTimerThenStateAShallBeActivated"
             // arrange/given
@@ -115,7 +109,5 @@ namespace AkkaActorSystem.Tests.Task03
             _testProbe.ExpectMsg<LightControlMessages.PedestriansRed>();
             _testProbe.ExpectMsg<LightControlMessages.EastWestGreen>();
         }
-
-
     }
 }

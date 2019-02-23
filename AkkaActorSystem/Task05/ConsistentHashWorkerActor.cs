@@ -5,7 +5,7 @@ using Akka.Event;
 
 namespace AkkaActorSystem.Task05
 {
-    public class ConsistentHashWorkerActor:ReceiveActor
+    public class ConsistentHashWorkerActor : ReceiveActor
     {
         private ILoggingAdapter _log = Context.GetLogger();
         private string _customerIds = string.Empty;
@@ -21,6 +21,5 @@ namespace AkkaActorSystem.Task05
                 Sender.Tell(new ScalingMessages.HashRsp(_customerIds));
             });
         }
-
     }
 }

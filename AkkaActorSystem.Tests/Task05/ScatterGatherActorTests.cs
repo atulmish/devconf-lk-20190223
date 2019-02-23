@@ -21,10 +21,7 @@ namespace AkkaActorSystem.Tests.Task05
             var numberOfMessages = 5;
 
             // act/when
-
-
             _sut.Tell(new ScalingMessages.ProcessDataRandomSleepTime(2));
-
 
             // assert/then
             ExpectMsg<ScalingMessages.Response>(TimeSpan.FromSeconds(2));

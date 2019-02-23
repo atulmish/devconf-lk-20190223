@@ -22,41 +22,30 @@ namespace AkkaActorSystem.Tests.Task05
 
             // act/when
             // assert/then
-
             _sut.Tell(new ScalingMessages.HashMessage("a"));
-
             ExpectMsg<ScalingMessages.HashRsp>(
                 m => { Assert.Same("a", m.CustomerIds); }
             );
 
-
             _sut.Tell(new ScalingMessages.HashMessage("u"));
-
             ExpectMsg<ScalingMessages.HashRsp>(
                 m => { Assert.Same("u", m.CustomerIds); }
             );
 
             _sut.Tell(new ScalingMessages.HashMessage("c"));
-
             ExpectMsg<ScalingMessages.HashRsp>(
                 m => { Assert.Equal("uc", m.CustomerIds); }
             );
 
             _sut.Tell(new ScalingMessages.HashMessage("a"));
-
-
             ExpectMsg<ScalingMessages.HashRsp>(
                 m => { Assert.Equal("aa", m.CustomerIds); }
             );
 
-
             _sut.Tell(new ScalingMessages.HashMessage("c"));
-
             ExpectMsg<ScalingMessages.HashRsp>(
                 m => { Assert.Equal("ucc", m.CustomerIds); }
             );
-
-
         }
     }
 }

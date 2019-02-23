@@ -5,9 +5,10 @@ using Akka.Event;
 
 namespace AkkaActorSystem.Task05
 {
-    public class BaseWorkerActor:ReceiveActor
+    public class BaseWorkerActor : ReceiveActor
     {
         private ILoggingAdapter _log = Context.GetLogger();
+
         public BaseWorkerActor()
         {
             Receive<ScalingMessages.IProcessData>(p =>
@@ -19,6 +20,5 @@ namespace AkkaActorSystem.Task05
                 Sender.Tell(new ScalingMessages.Response());
             });
         }
-
     }
 }

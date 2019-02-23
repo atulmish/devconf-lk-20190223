@@ -18,8 +18,9 @@ namespace AkkaActorSystem.Tests.Task04
             _sut.Tell(new Messages.CreateChild());
 
             // assert/then
-            ExpectMsg<Messages.ChildCreated>(e => { _sut = e.Child; },TimeSpan.FromMinutes(1));
+            ExpectMsg<Messages.ChildCreated>(e => { _sut = e.Child; }, TimeSpan.FromMinutes(1));
         }
+
         [Fact]
         public void WhenReceivesAddAndGetStatusThenStatusMessageIsSent()
         {

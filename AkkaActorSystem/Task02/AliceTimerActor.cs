@@ -4,7 +4,7 @@ using Akka.Event;
 
 namespace AkkaActorSystem.Task02
 {
-    public class AliceTimerActor:ReceiveActor
+    public class AliceTimerActor : ReceiveActor
     {
         private int _sum;
         private ICancelable _cancelTimer;
@@ -41,7 +41,5 @@ namespace AkkaActorSystem.Task02
 
             base.PreStart();
         }
-
-
     }
 }

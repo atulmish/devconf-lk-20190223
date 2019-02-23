@@ -5,7 +5,7 @@ using Xunit;
 
 namespace AkkaActorSystem.Tests.Task01
 {
-    public class AliceActorTests:ActorTestBase
+    public class AliceActorTests : ActorTestBase
     {
         [Fact]
         public void WhenStartsThenSendMessage()
@@ -25,7 +25,5 @@ namespace AkkaActorSystem.Tests.Task01
             _sut.Tell(new Messages.AuthResponse());
             ExpectMsg<Messages.AnotherAuthRequest>();
         }
-
-
     }
 }

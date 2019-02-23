@@ -7,7 +7,7 @@ using Xunit;
 
 namespace AkkaActorSystem.Tests.Task05
 {
-    public class RoundRobinActorTests:ActorTestBase
+    public class RoundRobinActorTests : ActorTestBase
     {
         [Fact]
         public void WhenSent5MessagesResponsesShallBeIn6Seconds()
@@ -24,12 +24,11 @@ namespace AkkaActorSystem.Tests.Task05
 
             for (int i = 0; i < numberOfMessages; i++)
             {
-                _sut.Tell(new ScalingMessages.ProcessData(numberOfMessages-1));
+                _sut.Tell(new ScalingMessages.ProcessData(numberOfMessages - 1));
             }
 
             // assert/then
             ReceiveN(numberOfMessages, TimeSpan.FromSeconds(numberOfMessages));
-
         }
     }
 }

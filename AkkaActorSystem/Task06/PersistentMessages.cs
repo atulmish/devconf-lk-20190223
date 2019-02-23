@@ -33,7 +33,6 @@ namespace AkkaActorSystem.Task06
 
         public interface IEvent
         {
-
         }
 
         public class MessageSent : IEvent

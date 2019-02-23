@@ -42,11 +42,11 @@ namespace ActorRunner
         public static void StartSystem()
         {
             Log.Logger = new LoggerConfiguration()
-                        .MinimumLevel.Debug()
-                        .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                        .Enrich.FromLogContext()
-                        .WriteTo.Console()
-                        .CreateLogger();
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .CreateLogger();
 
 
             var assembly = global::System.Reflection.Assembly.GetExecutingAssembly();
@@ -57,7 +57,6 @@ namespace ActorRunner
 
             var config = GetConfig();
             ActorsSystem = ActorSystem.Create("ClusterSystem", config);
-
         }
     }
 }

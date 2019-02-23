@@ -8,7 +8,9 @@ namespace AkkaActorSystem.Task06
     {
         private ILoggingAdapter _log = Context.GetLogger();
 
-        private readonly IActorRef _destionationActor = Context.ActorOf<ExampleDestinationAtLeastOnceDeliveryReceiveActor>();
+        private readonly IActorRef _destionationActor =
+            Context.ActorOf<ExampleDestinationAtLeastOnceDeliveryReceiveActor>();
+
         private int _received = 1;
 
         public ExampleAtLeastOnceDeliveryReceiveActor()
@@ -16,20 +18,18 @@ namespace AkkaActorSystem.Task06
             Recover<PersistentMessages.MessageSent>(msgSent => Handler(msgSent));
             Recover<PersistentMessages.MsgConfirmed>(msgConfirmed => Handler(msgConfirmed));
 
-            Command<string>(str =>
-            {
-                Persist(new PersistentMessages.MessageSent(str, Sender), Handler);
-            });
+            Command<string>(str => { Persist(new PersistentMessages.MessageSent(str, Sender), Handler); });
 
             Command<PersistentMessages.Confirm>(confirm =>
             {
-                Persist(new PersistentMessages.MsgConfirmed(confirm.DeliveryId,confirm.OrginalSender), Handler);
+                Persist(new PersistentMessages.MsgConfirmed(confirm.DeliveryId, confirm.OrginalSender), Handler);
             });
         }
 
         private void Handler(PersistentMessages.MessageSent messageSent)
         {
-            Deliver(_destionationActor.Path, l => new PersistentMessages.WithDeliveryId(l, messageSent.Message, messageSent.Sender));
+            Deliver(_destionationActor.Path,
+                l => new PersistentMessages.WithDeliveryId(l, messageSent.Message, messageSent.Sender));
         }
 
         private void Handler(PersistentMessages.MsgConfirmed msgConfirmed)

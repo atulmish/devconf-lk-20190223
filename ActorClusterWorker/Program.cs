@@ -11,12 +11,11 @@ namespace ActorRemoteDeployee
     {
         static void Main(string[] args)
         {
-                ActorSystemReference.StartSystem();
-                Console.WriteLine("Worker is ready");
+            ActorSystemReference.StartSystem();
+            Console.WriteLine("Worker is ready");
 
 
-
-                ActorSystemReference.ActorsSystem.WhenTerminated.Wait();
+            ActorSystemReference.ActorsSystem.WhenTerminated.Wait();
         }
     }
 }

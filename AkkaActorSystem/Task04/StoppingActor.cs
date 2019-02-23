@@ -4,7 +4,7 @@ using Akka.Routing;
 
 namespace AkkaActorSystem.Task04
 {
-    public class StoppingActor:ReceiveActor
+    public class StoppingActor : ReceiveActor
     {
         public StoppingActor()
         {
@@ -15,9 +15,10 @@ namespace AkkaActorSystem.Task04
                 Sender.Tell(new Messages.ChildCreated(child));
             });
         }
+
         protected override SupervisorStrategy SupervisorStrategy()
         {
-            return new OneForOneStrategy(r=>Directive.Stop);
+            return new OneForOneStrategy(r => Directive.Stop);
         }
     }
 }

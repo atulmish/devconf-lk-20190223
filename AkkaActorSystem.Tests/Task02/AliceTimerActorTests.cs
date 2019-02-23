@@ -6,8 +6,7 @@ using Xunit;
 
 namespace AkkaActorSystem.Tests.Task02
 {
-
-    public class AliceTimerActorTests:ActorTestBase
+    public class AliceTimerActorTests : ActorTestBase
     {
         [Fact]
         public void WhenStartedThenSumMessageSentOnTimer()
@@ -19,7 +18,6 @@ namespace AkkaActorSystem.Tests.Task02
 
             _testProbe.ExpectMsg<TimerMessages.SummarisedValue>(TimeSpan.FromSeconds(10));
         }
-
 
 
         [Fact]
@@ -34,11 +32,8 @@ namespace AkkaActorSystem.Tests.Task02
             _sut.Tell(new TimerMessages.AddValue(3));
 
             // assert/then
-            _testProbe.ExpectMsg<TimerMessages.SummarisedValue>(a =>
-            {
-                Assert.Equal(5 ,a.Amount);
-            },TimeSpan.FromSeconds(10));
-
+            _testProbe.ExpectMsg<TimerMessages.SummarisedValue>(a => { Assert.Equal(5, a.Amount); },
+                TimeSpan.FromSeconds(10));
         }
 
         [Fact]
@@ -56,9 +51,6 @@ namespace AkkaActorSystem.Tests.Task02
 
             // assert/then
             _testProbe.ExpectNoMsg(TimeSpan.FromSeconds(10));
-
         }
-
-
     }
 }

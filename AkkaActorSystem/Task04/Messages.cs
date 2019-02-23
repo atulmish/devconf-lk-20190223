@@ -4,11 +4,20 @@ namespace AkkaActorSystem.Task04
 {
     public class Messages
     {
-        public class UnsafeOperation {}
-        public class GetStatus {}
-        public class AddOne {}
+        public class UnsafeOperation
+        {
+        }
 
-        public class MyStatus{
+        public class GetStatus
+        {
+        }
+
+        public class AddOne
+        {
+        }
+
+        public class MyStatus
+        {
             public int Value { get; }
 
             public MyStatus(int value)
@@ -17,7 +26,9 @@ namespace AkkaActorSystem.Task04
             }
         }
 
-        public class CreateChild{}
+        public class CreateChild
+        {
+        }
 
         public class ChildCreated
         {

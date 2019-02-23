@@ -14,15 +14,14 @@ namespace AkkaActorSystem.Task05
         {
             public double SleepTime { get; }
 
-            public ProcessData( double sleepTime)
+            public ProcessData(double sleepTime)
             {
                 SleepTime = sleepTime;
             }
-
         }
 
 
-        public class ProcessDataRandomSleepTime:IProcessData
+        public class ProcessDataRandomSleepTime : IProcessData
         {
             private readonly double _sleepBase;
 
@@ -36,11 +35,10 @@ namespace AkkaActorSystem.Task05
                 }
             }
 
-            public ProcessDataRandomSleepTime( double sleepBase)
+            public ProcessDataRandomSleepTime(double sleepBase)
             {
                 _sleepBase = sleepBase;
             }
-
         }
 
         public class Response
@@ -57,7 +55,7 @@ namespace AkkaActorSystem.Task05
             }
         }
 
-        public class HashMessage:IConsistentHashable
+        public class HashMessage : IConsistentHashable
         {
             public string CustomerCode { get; }
 

@@ -7,9 +7,8 @@ using Xunit;
 
 namespace AkkaActorSystem.Tests.Task06
 {
-    public class ExampleAtLeastOnceDeliveryReceiveActorTests:ActorTestBase
+    public class ExampleAtLeastOnceDeliveryReceiveActorTests : ActorTestBase
     {
-
         [Fact]
         public void WhenWorkerDropsMessagesThenShallAllBeProcessed()
         {
