@@ -9,7 +9,10 @@ namespace AkkaActorSystem.Task01
         public AliceActor(IActorRef bob)
         {
             _bob = bob;
-            Receive<Messages.AuthResponse>(m => { Sender.Tell(new Messages.AnotherAuthRequest()); });
+            Receive<Messages.AuthResponse>(m =>
+            {
+                Sender.Tell(new Messages.AnotherAuthRequest());
+            });
         }
 
         protected override void PreStart()
